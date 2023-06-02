@@ -9,8 +9,34 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SIT708MyApplication01"
+        android:theme="@style/Theme.AppCompat"
         tools:targetApi="31">
+        <activity
+            android:name=".ShowMapActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDlXJLDzaBT9UdtjigtWfr7g-PgJGL-yBY" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".MapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LocationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RemoveItemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ShowLostFoundItemsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewAdvertActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -21,5 +47,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

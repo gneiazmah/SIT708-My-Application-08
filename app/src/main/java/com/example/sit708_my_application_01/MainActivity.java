@@ -1,7 +1,5 @@
 package com.example.sit708_my_application_01;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button newAdvert, ShowAll;
+    Button newAdvert, ShowAll, showMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         newAdvert = findViewById(R.id.btnNewAdvert);
         ShowAll = findViewById(R.id.btnShow);
+        showMap = findViewById(R.id.btnMap);
 
         newAdvert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +32,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), ShowLostFoundItemsActivity.class));
+            }
+        });
+
+        showMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ShowMapActivity.class));
             }
         });
 

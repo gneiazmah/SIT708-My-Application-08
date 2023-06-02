@@ -1,6 +1,8 @@
 package com.example.sit708_my_application_01;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -15,17 +17,21 @@ public class NewAdvertActivity extends AppCompatActivity {
 
     RadioButton lost, found;
     EditText name,phone,description,date, location;
-    Button save;
+    Button save, Selectlocation;
 
     private Integer postType = 0;
 
     private DBHelper dbHelper;
 
+    private static final String TAG = "NewAdvertActivity";
 
+
+    @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_advert);
+
 
         lost = findViewById(R.id.radiolost);
         found = findViewById(R.id.radioFound);
@@ -35,6 +41,7 @@ public class NewAdvertActivity extends AppCompatActivity {
         date = findViewById(R.id.etDate);
         location = findViewById(R.id.etLocation);
         save = findViewById(R.id.btnSaveAdvert);
+        Selectlocation = findViewById(R.id.btnSelectLocation);
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         int savedAttempts = sharedPreferences.getInt("attempts", 0);
@@ -42,7 +49,6 @@ public class NewAdvertActivity extends AppCompatActivity {
 
         dbHelper=new DBHelper(this);
         dbHelper.OpenDB();
-
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +98,24 @@ public class NewAdvertActivity extends AppCompatActivity {
 
             }
         });
+
+        Selectlocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), LocationActivity.class));
+            }
+        });
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Intent intent= this.getIntent();
+
+        location.setText(intent.getStringExtra("location"));
 
 
     }
